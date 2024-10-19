@@ -27,7 +27,7 @@ def export_todo_to_json(employee_id):
         todo_response = requests.get(todo_url)
         if todo_response.status_code != 200:
             print("Error fetching TODO data.")
-            return 
+            return
         todo_data = todo_response.json()
 
         employee_username = employee_data.get('username', 'Unknown User')
