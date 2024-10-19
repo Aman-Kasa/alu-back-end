@@ -7,14 +7,19 @@ import csv
 import requests
 import sys
 
+
 def export_todo_to_csv(employee_id):
     """
     Fetches TODO list for a given employee ID and exports it to a CSV file.
 
     :param employee_id: ID of the employee whose TODO list will be fetched.
     """
-    employee_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
-    todo_url = f"https://jsonplaceholder.typicode.com/todos?userId={employee_id}"
+    employee_url = (
+        f"https://jsonplaceholder.typicode.com/users/{employee_id}"
+    )
+    todo_url = (
+        f"https://jsonplaceholder.typicode.com/todos?userId={employee_id}"
+    )
 
     try:
         employee_response = requests.get(employee_url)
@@ -30,7 +35,9 @@ def export_todo_to_csv(employee_id):
             return
 
         todo_data = todo_response.json()
-        employee_username = employee_data.get('username', 'Unknown User')
+        employee_username = (
+            employee_data.get('username', 'Unknown User')
+        )
         csv_filename = f"{employee_id}.csv"
 
         with open(csv_filename, mode='w', newline='') as csv_file:
@@ -47,6 +54,7 @@ def export_todo_to_csv(employee_id):
 
     except requests.exceptions.RequestException as e:
         print(f"An error occurred: {e}")
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
