@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 """
 Script to fetch TODO progress of an employee from a REST API.
 """
